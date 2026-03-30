@@ -12,9 +12,7 @@ export interface NavSection {
 export const NAVIGATION: NavSection[] = [
   {
     group: "Discovery",
-    pages: [
-      { id: "overview", label: "Overview", href: "/" },
-    ],
+    pages: [{ id: "overview", label: "Overview", href: "/" }],
   },
   {
     group: "Analysis",
@@ -32,8 +30,9 @@ export const NAVIGATION: NavSection[] = [
     ],
   },
   {
-    group: "Plan",
+    group: "System",
     pages: [
+      { id: "experiences", label: "Experience Moments", href: "/experiences" },
       { id: "roadmap", label: "Roadmap", href: "/roadmap" },
     ],
   },

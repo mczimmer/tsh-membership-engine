@@ -1,22 +1,21 @@
 import { PageWrapper } from "@/components/PageWrapper";
+import { operatingModel } from "@/data";
 
-const TRACK_1 = [
-  "Backend architecture & API layer",
-  "AI workflow implementation",
-  "Real-time data pipelines",
-  "Dashboard development for hosts",
-  "CI/CD, testing & observability",
-  "Pairing with TSH engineers",
-];
+const TRACK_LABELS = {
+  capability: "DEV",
+  advisory: "ADV",
+} as const;
 
-const TRACK_2 = [
-  "Target architecture & roadmap",
-  "GDPR compliance framework",
-  "AI governance strategy",
-  "Multi-hub scalability patterns",
-  "Team & ways-of-working design",
-  "Tool & vendor evaluation",
-];
+const TRACK_THEMES = {
+  capability: {
+    badge: "bg-accent-primary/10 text-accent-primary",
+    dot: "bg-accent-primary/10 text-accent-primary",
+  },
+  advisory: {
+    badge: "bg-accent-secondary/10 text-accent-secondary",
+    dot: "bg-accent-secondary/10 text-accent-secondary",
+  },
+} as const;
 
 export default function HowWeWorkPage() {
   return (
@@ -34,53 +33,43 @@ export default function HowWeWorkPage() {
       </p>
 
       <div className="mt-11 grid grid-cols-2 gap-5">
-        <div className="rounded-card border border-red-200 bg-bg-card p-7 shadow-card">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-primary/10 text-xs font-bold text-accent-primary">
-              DEV
-            </div>
-            <div>
-              <div className="font-display text-[15px] font-bold text-text-primary">
-                Capability Track
+        {operatingModel.tracks.map((track) => {
+          const theme = TRACK_THEMES[track.id];
+          return (
+            <div
+              key={track.id}
+              className={`rounded-card border bg-bg-card p-7 shadow-card ${track.border}`}
+            >
+              <div className="mb-6 flex items-center gap-3">
+                <div
+                  className={`flex h-9 w-9 items-center justify-center rounded-xl text-xs font-bold ${theme.badge}`}
+                >
+                  {TRACK_LABELS[track.id]}
+                </div>
+                <div>
+                  <div className="font-display text-[15px] font-bold text-text-primary">
+                    {track.name}
+                  </div>
+                  <div className="text-[11px] font-medium text-text-tertiary">
+                    {track.owner}
+                  </div>
+                </div>
               </div>
-              <div className="text-[11px] font-medium text-text-tertiary">
-                Embedded Senior Developer
-              </div>
+              {track.deliverables.map((item, i) => (
+                <div key={i} className="mb-3 flex items-start gap-3">
+                  <div
+                    className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${theme.dot}`}
+                  >
+                    <span className="text-[10px]">+</span>
+                  </div>
+                  <span className="text-[13px] text-text-secondary leading-relaxed">
+                    {item}
+                  </span>
+                </div>
+              ))}
             </div>
-          </div>
-          {TRACK_1.map((item, i) => (
-            <div key={i} className="mb-3 flex items-start gap-3">
-              <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-primary/10">
-                <span className="text-[10px] text-accent-primary">+</span>
-              </div>
-              <span className="text-[13px] text-text-secondary leading-relaxed">{item}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="rounded-card border border-blue-200 bg-bg-card p-7 shadow-card">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-secondary/10 text-xs font-bold text-accent-secondary">
-              ADV
-            </div>
-            <div>
-              <div className="font-display text-[15px] font-bold text-text-primary">
-                Advisory Track
-              </div>
-              <div className="text-[11px] font-medium text-text-tertiary">
-                Strategic Guidance
-              </div>
-            </div>
-          </div>
-          {TRACK_2.map((item, i) => (
-            <div key={i} className="mb-3 flex items-start gap-3">
-              <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-secondary/10">
-                <span className="text-[10px] text-accent-secondary">+</span>
-              </div>
-              <span className="text-[13px] text-text-secondary leading-relaxed">{item}</span>
-            </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
 
       <div className="mt-5 flex items-center gap-5 rounded-card border border-border-subtle bg-bg-card p-6 shadow-card">
@@ -92,9 +81,7 @@ export default function HowWeWorkPage() {
             Continuous Feedback Loop
           </div>
           <div className="mt-1.5 text-xs leading-relaxed text-text-tertiary">
-            Weekly syncs ensure recommendations are grounded in implementation
-            reality. Both tracks share a single backlog, jointly prioritized
-            with TSH.
+            {operatingModel.sync.description}
           </div>
         </div>
       </div>

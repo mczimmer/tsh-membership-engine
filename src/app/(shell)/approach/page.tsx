@@ -2,84 +2,14 @@
 
 import { useState } from "react";
 import { PageWrapper } from "@/components/PageWrapper";
-
-const PHASES = [
-  {
-    label: "Now",
-    tag: "Current State",
-    color: "#F59E0B",
-    bg: "bg-amber-50",
-    text: "text-amber-600",
-    details: [
-      "Rapid prototyping with AI-assisted development",
-      "Feature-first, architecture-second",
-      "Manual or semi-automated data flows",
-      "Limited observability & monitoring",
-    ],
-    arch: "Monolithic / ad-hoc",
-    compliance: "Informal",
-    velocity: "Very High",
-    risk: "Growing",
-  },
-  {
-    label: "Validate",
-    tag: "Weeks 1-6",
-    color: "#E63946",
-    bg: "bg-red-50",
-    text: "text-red-600",
-    details: [
-      "Audit existing architecture & data flows",
-      "Define API contracts & data schemas",
-      "Establish GDPR baseline & gap analysis",
-      "Identify what to keep, refactor, or replace",
-    ],
-    arch: "API-first refactoring",
-    compliance: "Gap analysis done",
-    velocity: "High",
-    risk: "Managed",
-  },
-  {
-    label: "Harden",
-    tag: "Weeks 7-14",
-    color: "#2563EB",
-    bg: "bg-blue-50",
-    text: "text-blue-600",
-    details: [
-      "Production-grade infrastructure & CI/CD",
-      "Consent management & data lineage",
-      "Role-based access for staff dashboards",
-      "Testing, monitoring & incident response",
-    ],
-    arch: "Event-driven services",
-    compliance: "Privacy-by-design",
-    velocity: "Moderate to High",
-    risk: "Low",
-  },
-  {
-    label: "Scale",
-    tag: "Weeks 15+",
-    color: "#22C55E",
-    bg: "bg-green-50",
-    text: "text-green-600",
-    details: [
-      "Multi-hub rollout patterns & templates",
-      "AI model governance & feedback loops",
-      "Self-service analytics for hosts",
-      "Automated compliance monitoring",
-    ],
-    arch: "Distributed / multi-tenant",
-    compliance: "Automated",
-    velocity: "Sustained High",
-    risk: "Controlled",
-  },
-];
+import { maturityPhases } from "@/data";
 
 const METRIC_LABELS = ["Architecture", "Compliance", "Velocity", "Risk"];
-const METRIC_KEYS = ["arch", "compliance", "velocity", "risk"] as const;
+const METRIC_KEYS = ["architecture", "compliance", "velocity", "risk"] as const;
 
 export default function ApproachPage() {
   const [active, setActive] = useState(0);
-  const p = PHASES[active];
+  const p = maturityPhases[active];
 
   return (
     <PageWrapper breadcrumb="Our Approach">
@@ -95,9 +25,9 @@ export default function ApproachPage() {
       </p>
 
       <div className="mt-11 flex gap-1 rounded-2xl border border-border-subtle bg-bg-card p-1.5 shadow-card">
-        {PHASES.map((ph, i) => (
+        {maturityPhases.map((ph, i) => (
           <button
-            key={i}
+            key={ph.id}
             onClick={() => setActive(i)}
             className={`flex-1 rounded-xl py-3 text-center transition-all ${
               active === i ? `${ph.bg} shadow-sm` : "hover:bg-tsh-cream/50"
@@ -120,7 +50,7 @@ export default function ApproachPage() {
           <div className="mb-5 text-xs font-bold text-text-primary">
             {active === 0 ? "Current Reality" : "Key Activities"}
           </div>
-          {p.details.map((d, i) => (
+          {p.activities.map((d, i) => (
             <div key={i} className="mb-3 flex items-start gap-3">
               <div
                 className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full"
@@ -153,7 +83,7 @@ export default function ApproachPage() {
                   {label}
                 </div>
                 <div className="mt-0.5 text-[13px] font-bold text-text-primary">
-                  {p[METRIC_KEYS[i]]}
+                  {p.dimensions[METRIC_KEYS[i]]}
                 </div>
               </div>
             </div>

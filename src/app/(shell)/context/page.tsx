@@ -1,31 +1,5 @@
 import { PageWrapper } from "@/components/PageWrapper";
-
-const TENSIONS = [
-  {
-    title: "Speed vs. Structure",
-    left: "Rapid AI experimentation with Copilot & Claude",
-    right: "Need for maintainable, scalable architecture",
-    bg: "bg-amber-50",
-    border: "border-amber-200",
-    badge: "bg-amber-500",
-  },
-  {
-    title: "Personalization vs. Privacy",
-    left: "Deep member insights driving real-time host actions",
-    right: "GDPR compliance on sensitive member data across hubs",
-    bg: "bg-red-50",
-    border: "border-red-200",
-    badge: "bg-red-500",
-  },
-  {
-    title: "Empowerment vs. Governance",
-    left: "On-site staff acting autonomously on live data",
-    right: "Consistent data quality, access control & auditability",
-    bg: "bg-blue-50",
-    border: "border-blue-200",
-    badge: "bg-blue-500",
-  },
-];
+import { tensions } from "@/data";
 
 export default function ContextPage() {
   return (
@@ -46,9 +20,9 @@ export default function ContextPage() {
       </p>
 
       <div className="mt-11 flex flex-col gap-4">
-        {TENSIONS.map((t, i) => (
+        {tensions.map((t) => (
           <div
-            key={i}
+            key={t.id}
             className={`rounded-card border bg-bg-card p-6 shadow-card ${t.border}`}
           >
             <div className="mb-5 flex items-center gap-3">
@@ -61,13 +35,13 @@ export default function ContextPage() {
               <div
                 className={`rounded-xl p-4 text-[13px] leading-relaxed text-text-secondary ${t.bg}`}
               >
-                {t.left}
+                {t.left.description}
               </div>
               <div className="text-center text-xs font-semibold uppercase tracking-wide text-text-muted">vs</div>
               <div
                 className={`rounded-xl p-4 text-[13px] leading-relaxed text-text-secondary ${t.bg}`}
               >
-                {t.right}
+                {t.right.description}
               </div>
             </div>
           </div>

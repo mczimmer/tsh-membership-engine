@@ -1,79 +1,14 @@
 import { PageWrapper } from "@/components/PageWrapper";
+import { systemComponents } from "@/data";
 
-const CAPABILITIES = [
-  {
-    title: "Data Architecture",
-    icon: "DA",
-    bg: "bg-amber-50",
-    border: "border-amber-200",
-    skills: [
-      "Event-driven systems & streaming",
-      "Real-time data pipelines",
-      "Data modeling & warehousing",
-      "ETL / change data capture",
-    ],
-  },
-  {
-    title: "API & Integration",
-    icon: "API",
-    bg: "bg-blue-50",
-    border: "border-blue-200",
-    skills: [
-      "RESTful & GraphQL design",
-      "Third-party integrations",
-      "Auth / OAuth / SSO",
-      "Webhook & event architectures",
-    ],
-  },
-  {
-    title: "AI Workflows",
-    icon: "AI",
-    bg: "bg-red-50",
-    border: "border-red-200",
-    skills: [
-      "LLM integration patterns",
-      "Prompt engineering at scale",
-      "Model serving & monitoring",
-      "RAG & agent architectures",
-    ],
-  },
-  {
-    title: "Platform Engineering",
-    icon: "PE",
-    bg: "bg-green-50",
-    border: "border-green-200",
-    skills: [
-      "CI/CD pipeline design",
-      "Infrastructure as code",
-      "Observability & alerting",
-      "Container orchestration",
-    ],
-  },
-  {
-    title: "Privacy & Compliance",
-    icon: "PC",
-    bg: "bg-purple-50",
-    border: "border-purple-200",
-    skills: [
-      "GDPR-aware development",
-      "Consent management",
-      "Data minimization patterns",
-      "Audit logging & lineage",
-    ],
-  },
-  {
-    title: "Ways of Working",
-    icon: "WW",
-    bg: "bg-orange-50",
-    border: "border-orange-200",
-    skills: [
-      "Rapid prototyping mindset",
-      "Comfortable in ambiguity",
-      "Strong async communication",
-      "Pairing & knowledge transfer",
-    ],
-  },
-];
+const COMPONENT_LABELS: Record<string, string> = {
+  data_architecture: "DA",
+  api_integration: "API",
+  ai_workflows: "AI",
+  platform_engineering: "PE",
+  privacy_compliance: "PC",
+  ways_of_working: "WW",
+};
 
 export default function TeamPage() {
   return (
@@ -91,22 +26,22 @@ export default function TeamPage() {
       </p>
 
       <div className="mt-11 grid grid-cols-2 gap-4">
-        {CAPABILITIES.map((card, i) => (
+        {systemComponents.map((card) => (
           <div
-            key={i}
+            key={card.id}
             className={`rounded-card border bg-bg-card p-6 shadow-card ${card.border}`}
           >
             <div className="mb-4 flex items-center gap-3">
               <div
                 className={`flex h-9 w-9 items-center justify-center rounded-xl text-[11px] font-bold ${card.bg}`}
               >
-                {card.icon}
+                {COMPONENT_LABELS[card.id] ?? card.roleLabel.slice(0, 2).toUpperCase()}
               </div>
               <div className="font-display text-[14px] font-bold text-text-primary">
-                {card.title}
+                {card.name}
               </div>
             </div>
-            {card.skills.map((s, j) => (
+            {card.capabilities.map((s, j) => (
               <div
                 key={j}
                 className="relative mb-1.5 pl-3 text-[12px] leading-relaxed text-text-secondary"
