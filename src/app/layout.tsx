@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Membership Engine — Valtech × The Social Hub",
+  title: "Membership Engine - Valtech x The Social Hub",
   description: "Engagement plan for evolving TSH's AI-powered membership platform from experiment to production.",
 };
 

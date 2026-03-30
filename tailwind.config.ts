@@ -9,32 +9,54 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        tsh: {
+          black: "#1A1A1A",
+          cream: "#F5F0EB",
+          warmwhite: "#FAF7F2",
+          white: "#FFFFFF",
+          red: "#E63946",
+          blue: "#2563EB",
+          yellow: "#FACC15",
+          green: "#22C55E",
+        },
         bg: {
-          primary: "#0a0a0c",
-          secondary: "#09090b",
-          card: "rgba(255,255,255,0.02)",
+          primary: "#F5F0EB",
+          secondary: "#FAF7F2",
+          card: "#FFFFFF",
+          elevated: "#FFFFFF",
         },
         accent: {
-          indigo: "#6366f1",
-          violet: "#a78bfa",
-          purple: "#c084fc",
-          amber: "#f59e0b",
-          red: "#ef4444",
-          green: "#34d399",
+          primary: "#E63946",
+          secondary: "#2563EB",
+          warm: "#F59E0B",
+          green: "#22C55E",
         },
         text: {
-          primary: "#ffffff",
-          secondary: "rgba(255,255,255,0.55)",
-          tertiary: "rgba(255,255,255,0.35)",
-          muted: "rgba(255,255,255,0.25)",
+          primary: "#1A1A1A",
+          secondary: "#6B6560",
+          tertiary: "#9B9490",
+          muted: "#B8B2AB",
         },
         border: {
-          subtle: "rgba(255,255,255,0.06)",
-          accent: "rgba(99,102,241,0.15)",
+          subtle: "#E8E2DB",
+          strong: "#D4CEC7",
+          accent: "rgba(230,57,70,0.2)",
         },
       },
       fontFamily: {
-        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        sans: ["DM Sans", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        display: ["Space Grotesk", "DM Sans", "sans-serif"],
+      },
+      borderRadius: {
+        card: "16px",
+        button: "12px",
+      },
+      boxShadow: {
+        card: "0 1px 3px rgba(26,26,26,0.04), 0 1px 2px rgba(26,26,26,0.03)",
+        "card-hover":
+          "0 4px 12px rgba(26,26,26,0.06), 0 2px 4px rgba(26,26,26,0.04)",
+        elevated:
+          "0 8px 24px rgba(26,26,26,0.06), 0 2px 8px rgba(26,26,26,0.04)",
       },
     },
   },
