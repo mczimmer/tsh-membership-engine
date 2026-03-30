@@ -147,3 +147,51 @@ export interface ExperienceMoment {
   metric: string;
   metricTarget: string;
 }
+
+// Architecture
+export interface ArchitectureLayer {
+  id: "experience" | "intelligence" | "orchestration" | "record";
+  label: string;
+  subtitle: string;
+  color: string;
+  bg: string;
+  border: string;
+  blocks: string[];
+}
+
+export interface ArchitecturePlatform {
+  id: string;
+  name: string;
+  role: string;
+  description: string;
+  bg: string;
+  border: string;
+}
+
+export interface ArchitectureCapability {
+  title: string;
+  description: string;
+}
+
+export interface ProductizationCard {
+  title: string;
+  description: string;
+}
+
+export interface ChangePair {
+  from: string;
+  to: string;
+}
+
+export interface TechnicalEvolutionPhase {
+  id: string;
+  label: string;
+  subtitle: string;
+  color: string;
+  bg: string;
+  border: string;
+  introduced: string[];
+  unchanged: string[];
+  riskReduced: string;
+  valueUnlocked: string;
+}

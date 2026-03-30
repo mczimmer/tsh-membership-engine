@@ -33,6 +33,12 @@ export const NAVIGATION: NavSection[] = [
     group: "System",
     pages: [
       { id: "experiences", label: "Experience Moments", href: "/experiences" },
+      { id: "architecture", label: "Architecture", href: "/architecture" },
+      {
+        id: "technical-evolution",
+        label: "Technical Evolution",
+        href: "/technical-evolution",
+      },
       { id: "roadmap", label: "Roadmap", href: "/roadmap" },
     ],
   },
