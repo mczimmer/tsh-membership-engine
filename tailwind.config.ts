@@ -20,8 +20,8 @@ const config: Config = {
           green: "#1A8F3F",
         },
         bg: {
-          primary: "#F5F0EB",
-          secondary: "#FAF7F2",
+          primary: "#B3B0AE",
+          secondary: "#C1BEBC",
           card: "#FFFFFF",
           elevated: "#FFFFFF",
         },
@@ -34,9 +34,9 @@ const config: Config = {
         },
         text: {
           primary: "#1A1A1A",
-          secondary: "#6B6560",
-          tertiary: "#9B9490",
-          muted: "#B8B2AB",
+          secondary: "#4F4842",
+          tertiary: "#6F6761",
+          muted: "#8E857D",
         },
         border: {
           subtle: "#E8E2DB",
