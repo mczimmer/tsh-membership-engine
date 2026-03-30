@@ -25,9 +25,9 @@ export const maturityPhases: MaturityPhase[] = [
     id: "validate",
     label: "Validate",
     tag: "Weeks 1-6",
-    color: "#E63946",
-    bg: "bg-red-50",
-    text: "text-red-600",
+    color: "#F5A0B1",
+    bg: "bg-pink-50",
+    text: "text-pink-600",
     activities: [
       "Audit existing architecture & data flows",
       "Define API contracts & data schemas",

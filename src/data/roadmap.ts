@@ -4,11 +4,11 @@ export const roadmapPhases: RoadmapPhase[] = [
   {
     phaseId: "validate",
     label: "Validate",
-    color: "#E63946",
-    bg: "bg-red-50",
-    text: "text-red-600",
-    border: "border-red-200",
-    dot: "bg-red-500",
+    color: "#F5A0B1",
+    bg: "bg-pink-50",
+    text: "text-pink-600",
+    border: "border-pink-200",
+    dot: "bg-pink-400",
     items: [
       {
         id: "discovery_audit",

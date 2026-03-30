@@ -43,8 +43,8 @@ export const systemComponents: SystemComponent[] = [
       "RAG & agent architectures",
     ],
     emoji: "⚡",
-    bg: "bg-red-50",
-    border: "border-red-200",
+    bg: "bg-pink-50",
+    border: "border-pink-200",
   },
   {
     id: "platform_engineering",

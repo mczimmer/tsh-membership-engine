@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAVIGATION } from "@/config/navigation";
+import tshLogo from "../../The Social Hub Logo Black Outlined RGB 1d1117.png";
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -15,14 +17,14 @@ export function Sidebar() {
   return (
     <aside className="fixed top-0 left-0 bottom-0 z-50 flex w-[272px] flex-col border-r border-border-subtle bg-tsh-white">
       <div className="border-b border-border-subtle px-7 pb-6 pt-7">
-        <div className="mb-5 flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="6" r="4" fill="white" />
-              <circle cx="6" cy="16" r="4" fill="white" />
-              <circle cx="18" cy="16" r="4" fill="white" />
-              <circle cx="12" cy="12" r="3" fill="white" />
-            </svg>
+        <div className="mb-5 flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-border-subtle bg-tsh-cream/70 p-1.5">
+            <Image
+              src={tshLogo}
+              alt="The Social Hub logo"
+              className="h-full w-full object-contain"
+              priority
+            />
           </div>
           <div>
             <div className="text-[11px] font-bold uppercase tracking-[0.12em] text-text-secondary">

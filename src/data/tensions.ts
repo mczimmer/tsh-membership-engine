@@ -40,10 +40,10 @@ export const tensions: Tension[] = [
       "Regulatory exposure, member trust erosion, cross-border data violations",
     resolutionStrategy:
       "Privacy-by-design embedded in every feature, not bolted on after",
-    color: "#E63946",
-    bg: "bg-red-50",
-    border: "border-red-200",
-    badge: "bg-red-500",
+    color: "#F5A0B1",
+    bg: "bg-pink-50",
+    border: "border-pink-200",
+    badge: "bg-pink-400",
   },
   {
     id: "empowerment_vs_governance",

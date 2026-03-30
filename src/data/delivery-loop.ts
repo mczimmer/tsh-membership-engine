@@ -26,8 +26,8 @@ export const deliveryLoop: DeliveryLoop = {
       description:
         "Every Friday: live walkthrough of what shipped, what we learned, what's next. Working software, not slide decks.",
       icon: "🎬",
-      bg: "bg-red-50",
-      border: "border-red-200",
+      bg: "bg-pink-50",
+      border: "border-pink-200",
       type: "output",
     },
     {

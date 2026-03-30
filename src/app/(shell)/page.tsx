@@ -146,8 +146,8 @@ export default function OverviewPage() {
             label: "Capability",
             desc: "Senior full-stack developer embedded in the TSH team, backend-heavy",
             color: "text-accent-primary",
-            bg: "bg-red-50",
-            border: "border-red-200",
+            bg: "bg-pink-50",
+            border: "border-pink-200",
           },
           {
             stat: "2",

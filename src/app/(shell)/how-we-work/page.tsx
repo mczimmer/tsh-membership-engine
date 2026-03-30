@@ -26,7 +26,7 @@ export default function HowWeWorkPage() {
 
       <div className="relative mb-10">
         <div className="grid grid-cols-[1fr_60px_1fr] gap-0">
-          <div className="overflow-hidden rounded-2xl border-2 border-red-200">
+          <div className="overflow-hidden rounded-2xl border-2 border-pink-200">
             <div className="h-1.5 bg-accent-primary" />
             <div className="p-7">
               <div className="mb-6 flex items-center gap-3">

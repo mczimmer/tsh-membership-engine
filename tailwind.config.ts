@@ -14,10 +14,10 @@ const config: Config = {
           cream: "#F5F0EB",
           warmwhite: "#FAF7F2",
           white: "#FFFFFF",
-          red: "#E63946",
-          blue: "#2563EB",
+          blue: "#2E7CF6",
+          pink: "#F5A0B1",
           yellow: "#FACC15",
-          green: "#22C55E",
+          green: "#1A8F3F",
         },
         bg: {
           primary: "#F5F0EB",
@@ -26,10 +26,11 @@ const config: Config = {
           elevated: "#FFFFFF",
         },
         accent: {
-          primary: "#E63946",
-          secondary: "#2563EB",
-          warm: "#F59E0B",
-          green: "#22C55E",
+          primary: "#2E7CF6",
+          secondary: "#1A8F3F",
+          pink: "#F5A0B1",
+          amber: "#FACC15",
+          green: "#1A8F3F",
         },
         text: {
           primary: "#1A1A1A",
@@ -40,7 +41,7 @@ const config: Config = {
         border: {
           subtle: "#E8E2DB",
           strong: "#D4CEC7",
-          accent: "rgba(230,57,70,0.2)",
+          accent: "rgba(46,124,246,0.2)",
         },
       },
       fontFamily: {

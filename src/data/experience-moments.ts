@@ -145,9 +145,9 @@ export const pillarColors: Record<
     border: "border-amber-200",
   },
   stay: {
-    bg: "bg-red-50",
-    text: "text-red-700",
-    border: "border-red-200",
+    bg: "bg-pink-50",
+    text: "text-pink-700",
+    border: "border-pink-200",
   },
   work: {
     bg: "bg-blue-50",
