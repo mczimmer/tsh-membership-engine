@@ -20,8 +20,8 @@ const config: Config = {
           green: "#1A8F3F",
         },
         bg: {
-          primary: "#B3B0AE",
-          secondary: "#C1BEBC",
+          primary: "#F5F0EB",
+          secondary: "#FAF7F2",
           card: "#FFFFFF",
           elevated: "#FFFFFF",
         },
