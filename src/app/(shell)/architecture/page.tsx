@@ -53,6 +53,10 @@ export default function ArchitecturePage() {
   const ecosystemCards = ecosystemPlatforms.filter(
     (platform) => platform.id !== "ai_delivery",
   );
+  const membershipEngineLayers = ["experience", "intelligence", "orchestration"]
+    .map((id) => architectureLayers.find((layer) => layer.id === id))
+    .filter((layer) => layer !== undefined);
+  const recordLayer = architectureLayers.find((layer) => layer.id === "record");
 
   return (
     <PageWrapper breadcrumb="Architecture">
@@ -71,14 +75,18 @@ export default function ArchitecturePage() {
       <div className="mb-10 overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-card">
         <div className="border-b border-border-subtle bg-[linear-gradient(135deg,rgba(46,124,246,0.08),rgba(245,240,235,0.9),rgba(245,160,177,0.08))] px-6 py-5">
           <div className="max-w-[760px] text-[14px] leading-[1.7] text-text-secondary">
-            Existing systems at the base, orchestration and intelligence in the
-            middle, differentiated experience at the top.
+            TSH's existing systems of record sit at the base. The Membership
+            Engine adds orchestration, intelligence, and a unified experience
+            layer on top.
           </div>
         </div>
 
         <div className="px-6 py-5">
           <div className="mx-auto max-w-[920px]">
-            {architectureLayers.map((layer, index) => (
+            <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-accent-primary">
+              What the Membership Engine adds
+            </div>
+            {membershipEngineLayers.map((layer, index) => (
               <div key={layer.id} className="relative">
                 {index > 0 ? (
                   <div className="flex justify-center py-2">
@@ -126,6 +134,52 @@ export default function ArchitecturePage() {
                 </div>
               </div>
             ))}
+
+            <div className="py-3">
+              <div className="border-t border-dashed border-border-subtle" />
+            </div>
+
+            <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-text-muted">
+              What TSH operates today
+            </div>
+            {recordLayer ? (
+              <div
+                className={`rounded-2xl border border-dashed px-6 py-5 ${recordLayer.bg.replace("bg-amber-50", "bg-amber-50/60")} ${recordLayer.border}`}
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <div className="min-w-0 flex items-center gap-3">
+                    <div
+                      className="shrink-0 text-[11px] font-bold uppercase tracking-[0.18em]"
+                      style={{ color: recordLayer.color }}
+                    >
+                      {recordLayer.label}
+                    </div>
+                    <div className="truncate text-[14px] font-bold text-text-primary">
+                      {recordLayer.subtitle}
+                    </div>
+                  </div>
+                  <div
+                    className="shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em]"
+                    style={{
+                      background: `${recordLayer.color}16`,
+                      color: recordLayer.color,
+                    }}
+                  >
+                    L4
+                  </div>
+                </div>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {recordLayer.blocks.map((block) => (
+                    <div
+                      key={block}
+                      className="rounded-full border border-white/70 bg-white/70 px-3 py-1.5 text-[11px] font-semibold text-text-primary"
+                    >
+                      {block}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
