@@ -164,6 +164,7 @@ export interface ArchitecturePlatform {
   name: string;
   role: string;
   description: string;
+  mapsTo: ArchitectureLayer["id"][];
   bg: string;
   border: string;
 }

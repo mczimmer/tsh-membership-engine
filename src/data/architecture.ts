@@ -11,7 +11,7 @@ export const architecturePositioning = {
   eyebrow: "SYSTEM",
   title: "How the Membership Engine is built",
   body:
-    "TSH already has many of the right building blocks in place: booking, CRM, data, activation, and experience platforms. The challenge is not replacing them. It is making them work together as a real-time, governed membership system. The Membership Engine is the orchestration and intelligence layer that turns those parts into a connected product.",
+    "The Membership Engine is the orchestration and intelligence layer that sits across TSH's existing systems. It does not replace them. It connects them.",
   supportLine:
     "This is not a new platform replacing your stack. It is the layer that makes your stack behave like a system.",
 };
@@ -53,9 +53,9 @@ export const architectureLayers: ArchitectureLayer[] = [
     id: "intelligence",
     label: "INTELLIGENCE",
     subtitle: "Where context becomes action",
-    color: "#F5A0B1",
-    bg: "bg-pink-50",
-    border: "border-pink-200",
+    color: "#1A8F3F",
+    bg: "bg-green-50",
+    border: "border-green-200",
     blocks: [
       "Recommendations",
       "AI Summaries",
@@ -68,9 +68,9 @@ export const architectureLayers: ArchitectureLayer[] = [
     id: "orchestration",
     label: "ORCHESTRATION",
     subtitle: "How signals move across systems",
-    color: "#FACC15",
-    bg: "bg-amber-50",
-    border: "border-amber-200",
+    color: "#F5A0B1",
+    bg: "bg-pink-50",
+    border: "border-pink-200",
     blocks: [
       "API Layer",
       "Event Routing",
@@ -83,9 +83,9 @@ export const architectureLayers: ArchitectureLayer[] = [
     id: "record",
     label: "RECORD",
     subtitle: "What TSH already operates",
-    color: "#1A8F3F",
-    bg: "bg-green-50",
-    border: "border-green-200",
+    color: "#FACC15",
+    bg: "bg-amber-50",
+    border: "border-amber-200",
     blocks: [
       "Muse",
       "Salesforce",
@@ -137,6 +137,7 @@ export const ecosystemPlatforms: ArchitecturePlatform[] = [
     role: "booking and stay signals",
     description:
       "Source of operational behavior including bookings, arrivals, stays, and location-linked activity.",
+    mapsTo: ["record", "orchestration"],
     bg: "bg-amber-50",
     border: "border-amber-200",
   },
@@ -146,6 +147,7 @@ export const ecosystemPlatforms: ArchitecturePlatform[] = [
     role: "CRM and member lifecycle",
     description:
       "Source of customer identity, segmentation, communication history, and relationship management.",
+    mapsTo: ["record", "experience"],
     bg: "bg-blue-50",
     border: "border-blue-200",
   },
@@ -155,6 +157,7 @@ export const ecosystemPlatforms: ArchitecturePlatform[] = [
     role: "context and analytics foundation",
     description:
       "Houses modeled data, behavioral analytics, historical patterns, and the broader member intelligence base.",
+    mapsTo: ["record", "intelligence"],
     bg: "bg-green-50",
     border: "border-green-200",
   },
@@ -164,6 +167,7 @@ export const ecosystemPlatforms: ArchitecturePlatform[] = [
     role: "activation layer",
     description:
       "Syncs modeled context and decisions into operational systems, enabling action without custom rewiring everywhere.",
+    mapsTo: ["orchestration", "experience"],
     bg: "bg-pink-50",
     border: "border-pink-200",
   },
@@ -173,6 +177,7 @@ export const ecosystemPlatforms: ArchitecturePlatform[] = [
     role: "experience layer",
     description:
       "Powers content and digital experience surfaces where membership logic and personalization can be expressed.",
+    mapsTo: ["experience"],
     bg: "bg-blue-50",
     border: "border-blue-200",
   },
@@ -182,6 +187,7 @@ export const ecosystemPlatforms: ArchitecturePlatform[] = [
     role: "delivery acceleration and workflow experimentation",
     description:
       "Speeds how the system is built, and over time becomes part of how the product itself operates.",
+    mapsTo: ["intelligence", "orchestration"],
     bg: "bg-amber-50",
     border: "border-amber-200",
   },
@@ -203,7 +209,7 @@ export const architecturalDirection = {
 };
 
 export const productizationIntro =
-  "The way this is structured determines whether it remains an internal platform or becomes a reusable Membership Engine product. Productization does not begin with packaging. It begins with architecture: clean separation of concerns, configurable workflows, reusable services, and hub-specific behavior expressed through configuration instead of custom rebuilds.";
+  "The architecture is deliberately designed so that the Membership Engine can evolve from an internal TSH platform into a reusable product for the hospitality industry. This is not a v1 requirement, but the architecture does not block it.";
 
 export const productizationCards: ProductizationCard[] = [
   {
