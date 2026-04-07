@@ -150,7 +150,7 @@ export default function OverviewPage() {
             stat: "1",
             unit: "dev",
             label: "Capability",
-            desc: "Senior full-stack developer embedded in the TSH team, backend-heavy",
+            desc: "Senior full-stack developer embedded in the TSH team, with the flexibility to bring in specialist capability as the platform evolves",
             color: "text-accent-primary",
             bg: "bg-pink-50",
             border: "border-pink-200",
