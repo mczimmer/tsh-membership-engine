@@ -214,7 +214,7 @@ export default function RoadmapPage() {
             What success looks like
           </div>
           <p className="max-w-[580px] text-[17px] font-medium leading-[1.75] text-text-primary">
-            A membership platform that&apos;s as fast to iterate on as today — but
+            A membership platform that's as fast to iterate on as today, but
             production-grade, GDPR-compliant, and ready to scale across every
             Social Hub. An architecture the team understands and owns.
           </p>
@@ -222,7 +222,7 @@ export default function RoadmapPage() {
       </div>
 
       <div className="border-t border-border-subtle pt-8 text-center text-[11px] font-medium text-text-muted">
-        VALTECH × THE SOCIAL HUB — Q2 2026
+        VALTECH × THE SOCIAL HUB - Q2 2026
       </div>
     </PageWrapper>
   );

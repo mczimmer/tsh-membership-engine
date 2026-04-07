@@ -57,10 +57,16 @@ export default function OverviewPage() {
         </h1>
 
         <p className="mt-8 max-w-[600px] text-[18px] leading-[1.8] text-text-secondary">
-          TSH has built something rare - a data-driven, AI-enabled membership
-          experience with real-time staff dashboards. The foundation is strong.
-          Now the question is how to evolve it without losing the velocity that
-          got you here.
+          TSH has the strategic clarity to recognise that a differentiated
+          membership experience cannot be bought off the shelf. By building its
+          own AI-powered personalisation platform, TSH has the opportunity to
+          create something unique to its brand, its hubs, and its community.
+          Done right, that becomes a competitive advantage that could extend
+          beyond TSH into a productised model for the wider hospitality
+          industry. The foundation is strong, the ambition is clear, and now
+          the question is how to evolve from experimental prototype to
+          production-grade platform without losing the velocity that got you
+          here.
         </p>
       </div>
 
@@ -131,7 +137,7 @@ export default function OverviewPage() {
 
           <div className="mt-10 border-t border-border-subtle pt-6 text-center">
             <div className="mx-auto max-w-[500px] text-[14px] leading-relaxed text-text-secondary">
-              This document is the operating model for navigating both -
+              This document is the operating model for navigating both,
               simultaneously, not sequentially.
             </div>
           </div>

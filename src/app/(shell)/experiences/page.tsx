@@ -299,7 +299,7 @@ export default function ExperiencesPage() {
             Every moment is connected
           </div>
           <p className="max-w-[560px] text-[15px] font-medium leading-[1.7] text-text-primary">
-            Experience moments aren&apos;t standalone features - they&apos;re the
+            Experience moments aren't standalone features - they're the
             visible output of the Membership Engine. Each traces back through AI
             workflows, data architecture, and governance. Change one component,
             and the ripple is visible across every moment it touches.

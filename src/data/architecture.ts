@@ -97,7 +97,7 @@ export const architectureLayers: ArchitectureLayer[] = [
 ];
 
 export const architectureSupport =
-  "The Membership Engine does not replace TSH’s systems of record. It adds a thin orchestration and intelligence layer on top of them, allowing member context, operational signals, and AI workflows to work as one system.";
+  "The Membership Engine does not replace TSH's systems of record. It adds a thin orchestration and intelligence layer on top of them, allowing member context, operational signals, and AI workflows to work as one system.";
 
 export const membershipEngineCoreIntro =
   "This is the new capability being introduced. It is the thin layer that unifies context, runs AI-enabled workflows, and triggers actions across the ecosystem.";

@@ -15,7 +15,7 @@ export default function TeamPage() {
           environment
         </h1>
         <p className="mt-6 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
-          TSH&apos;s setup demands someone who ships fast in ambiguity, thinks in
+          TSH's setup demands someone who ships fast in ambiguity, thinks in
           systems, and is comfortable pairing across disciplines.
         </p>
       </div>
@@ -27,9 +27,9 @@ export default function TeamPage() {
             A different lens
           </div>
           <p className="max-w-[560px] text-[16px] font-medium leading-[1.7] text-text-primary">
-            These aren&apos;t just skills we bring - they&apos;re the components
+            These aren't just skills we bring - they're the components
             of the Membership Engine. Each maps to a system role that powers
-            the experience moments we&apos;re building.
+            the experience moments we're building.
           </p>
         </div>
       </div>

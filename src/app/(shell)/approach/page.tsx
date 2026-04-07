@@ -28,8 +28,8 @@ export default function ApproachPage() {
           not revolution
         </h1>
         <p className="mt-6 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
-          We won&apos;t stop and rebuild. We&apos;ll harden what works, replace
-          what doesn&apos;t, and layer in governance incrementally - all while
+          We won't stop and rebuild. We'll harden what works, replace
+          what doesn't, and layer in governance incrementally - all while
           continuing to ship.
         </p>
       </div>
@@ -180,7 +180,7 @@ export default function ApproachPage() {
         </div>
         <div className="rounded-xl border border-green-200 bg-green-50 p-6">
           <div className="mb-2 text-[10px] font-bold uppercase tracking-wider text-green-600">
-            Where we&apos;re going
+            Where we're going
           </div>
           <div className="mb-3 font-display text-[22px] font-extrabold text-text-primary">
             Production-grade

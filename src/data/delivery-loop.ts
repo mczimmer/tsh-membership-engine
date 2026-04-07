@@ -74,7 +74,7 @@ export const deliveryLoop: DeliveryLoop = {
       id: "async_first",
       title: "Async-First",
       description:
-        "Daily updates via Slack/threads, not meetings. Sync time reserved for decisions and demos — no status theatre.",
+        "Daily updates via Slack/threads, not meetings. Sync time reserved for decisions and demos, with no status theatre.",
       icon: "💬",
       bg: "bg-orange-50",
       border: "border-orange-200",

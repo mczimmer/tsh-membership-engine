@@ -193,12 +193,12 @@ export default function ContextPage() {
         <h1 className="max-w-[600px] font-display text-[44px] font-extrabold leading-[1.05] tracking-tight text-text-primary">
           Three tensions
           <br />
-          we&apos;re solving together
+          we're solving together
         </h1>
         <p className="mt-6 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
-          TSH&apos;s membership platform sits at the intersection of ambitious
+          TSH's membership platform sits at the intersection of ambitious
           personalization and the operational reality of scaling across multiple
-          hubs. These aren&apos;t problems to fix - they&apos;re tensions to manage.
+          hubs. These aren't problems to fix - they're tensions to manage.
         </p>
       </div>
 
@@ -224,14 +224,14 @@ export default function ContextPage() {
             Our read
           </div>
           <p className="max-w-[600px] text-[17px] font-medium leading-[1.75] text-text-primary">
-            The goal isn&apos;t to eliminate speed in favor of structure. It&apos;s
+            The goal isn't to eliminate speed in favor of structure. It's
             to find the right balance at each stage, and shift that balance
             deliberately as the platform matures.
           </p>
           <p className="mt-4 max-w-[600px] text-[14px] leading-[1.7] text-text-tertiary">
             Each tension maps to specific system components, governance
             decisions, and experience moments throughout this document. Click
-            any tension to see the risk it creates and the strategy we&apos;ll use
+            any tension to see the risk it creates and the strategy we'll use
             to resolve it.
           </p>
         </div>

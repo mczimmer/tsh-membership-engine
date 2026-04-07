@@ -36,7 +36,7 @@ export default function DeliveryPage() {
           structured outcomes
         </h1>
         <p className="mt-6 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
-          We&apos;ll match TSH&apos;s pace with sprint-based delivery and weekly
+          We'll match TSH's pace with sprint-based delivery and weekly
           demos, while layering in lightweight governance that compounds.
         </p>
       </div>
