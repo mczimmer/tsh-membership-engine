@@ -76,10 +76,10 @@ export default function TeamPage() {
           </div>
           <p className="max-w-[620px] text-[16px] font-medium leading-[1.75] text-text-primary">
             This is not a headcount argument. It is a scope argument. One
-            embedded developer covers the core build. But the breadth of what
-            the Membership Engine touches - data architecture, AI workflows,
-            platform engineering, privacy, integration, ways of working - is
-            why the advisory track exists alongside it. Two tracks, one system.
+            embedded developer covers the core build, but the Membership Engine
+            spans data architecture, AI workflows, platform engineering,
+            privacy, integration, and ways of working. That breadth is why the
+            advisory track exists alongside it. Two tracks, one system.
           </p>
         </div>
       </div>
