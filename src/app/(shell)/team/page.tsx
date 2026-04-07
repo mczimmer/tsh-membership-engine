@@ -68,6 +68,22 @@ export default function TeamPage() {
         ))}
       </div>
 
+      <div className="relative mb-10">
+        <div className="absolute bottom-0 left-0 top-0 w-1 rounded-full bg-accent-secondary" />
+        <div className="py-2 pl-8">
+          <div className="mb-2 text-[11px] font-bold uppercase tracking-[0.15em] text-accent-secondary">
+            Why this matters
+          </div>
+          <p className="max-w-[620px] text-[16px] font-medium leading-[1.75] text-text-primary">
+            This is not a headcount argument. It is a scope argument. One
+            embedded developer covers the core build. But the breadth of what
+            the Membership Engine touches - data architecture, AI workflows,
+            platform engineering, privacy, integration, ways of working - is
+            why the advisory track exists alongside it. Two tracks, one system.
+          </p>
+        </div>
+      </div>
+
       <div className="border-t border-border-subtle pt-8">
         <Link
           href="/delivery"
