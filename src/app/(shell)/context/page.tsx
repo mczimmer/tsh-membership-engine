@@ -191,16 +191,38 @@ export default function ContextPage() {
           Analysis
         </div>
         <h1 className="max-w-[600px] font-display text-[44px] font-extrabold leading-[1.05] tracking-tight text-text-primary">
-          Three tensions
-          <br />
-          we're solving together
+          Where we are
         </h1>
         <p className="mt-6 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
-          TSH's membership platform sits at the intersection of ambitious
-          personalization and the operational reality of scaling across multiple
-          hubs. These aren't problems to fix - they're tensions to manage.
+          TSH has an idea for something that could be genuinely game changing:
+          an AI powered membership platform built from the inside, shaped by
+          the people who run the hubs, not bought from a vendor. And the
+          progress so far has been remarkable. Using tools like Copilot and
+          Claude, the team has moved faster than anyone expected.
         </p>
       </div>
+
+      <div className="mb-10 relative">
+        <div className="absolute bottom-0 left-0 top-0 w-1 rounded-full bg-accent-primary" />
+        <div className="py-2 pl-8">
+          <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.15em] text-accent-primary">
+            The inflection point
+          </div>
+          <p className="max-w-[760px] text-[16px] leading-[1.75] text-text-primary">
+            But what got TSH here will not get it to the next stage. Vibe
+            coding and rapid experimentation built a prototype that proves the
+            concept. Now comes the harder work: making it enterprise ready,
+            scaling it across hubs, and keeping the door open for
+            productisation. That transition is what this engagement is designed
+            to support.
+          </p>
+        </div>
+      </div>
+
+      <p className="mb-8 max-w-[700px] text-[15px] leading-[1.75] text-text-secondary">
+        We see three tensions at the heart of that transition. These are not
+        problems to fix. They are forces to navigate.
+      </p>
 
       <div className="mb-10 space-y-4">
         {tensions.map((t, i) => (
