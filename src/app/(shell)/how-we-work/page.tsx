@@ -2,6 +2,24 @@ import Link from "next/link";
 import { PageWrapper } from "@/components/PageWrapper";
 import { operatingModel } from "@/data";
 
+const DELIVERY_TRACK_ITEMS = [
+  "Owns backend architecture and API layer",
+  "Implements AI workflows in the product",
+  "Builds and maintains real time data flows",
+  "Delivers and evolves staff facing tools",
+  "Ensures CI CD, testing, and observability",
+  "Works directly with TSH engineers in the codebase",
+];
+
+const ADVISORY_TRACK_ITEMS = [
+  "Defines target architecture and system boundaries",
+  "Establishes GDPR and data governance model",
+  "Sets AI usage guardrails and trust boundaries",
+  "Designs multi hub scalability patterns",
+  "Shapes team structure and ways of working",
+  "Evaluates tools and integration approaches",
+];
+
 export default function HowWeWorkPage() {
   const cap = operatingModel.tracks[0];
   const adv = operatingModel.tracks[1];
@@ -18,13 +36,21 @@ export default function HowWeWorkPage() {
           one backlog
         </h1>
         <p className="mt-6 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
-          Capability and strategy running in parallel. The developer implements
-          what the advisory track recommends. The advisory track evolves based
-          on what the developer discovers.
+          One system. Two roles.
+        </p>
+        <p className="mt-4 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
+          The embedded developer builds and operates the system. The advisory
+          track ensures the system is designed correctly and can scale.
+        </p>
+        <p className="mt-4 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
+          Both work from the same backlog and continuously shape each other.
         </p>
       </div>
 
       <div className="relative mb-10">
+        <div className="mb-4 text-center text-[12px] leading-[1.6] text-text-tertiary">
+          Continuous feedback between delivery and design
+        </div>
         <div className="grid grid-cols-[1fr_60px_1fr] gap-0">
           <div className="overflow-hidden rounded-2xl border-2 border-pink-200">
             <div className="h-1.5 bg-accent-primary" />
@@ -35,14 +61,14 @@ export default function HowWeWorkPage() {
                 </div>
                 <div>
                   <div className="font-display text-[16px] font-extrabold text-text-primary">
-                    {cap.name}
+                    Delivery Track
                   </div>
                   <div className="text-[11px] font-medium text-text-tertiary">
                     {cap.owner}
                   </div>
                 </div>
               </div>
-              {cap.deliverables.map((item, i) => (
+              {DELIVERY_TRACK_ITEMS.map((item, i) => (
                 <div key={i} className="mb-3 flex items-start gap-3">
                   <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-primary/10">
                     <span className="text-[9px] font-bold text-accent-primary">
@@ -111,7 +137,7 @@ export default function HowWeWorkPage() {
                   </div>
                 </div>
               </div>
-              {adv.deliverables.map((item, i) => (
+              {ADVISORY_TRACK_ITEMS.map((item, i) => (
                 <div key={i} className="mb-3 flex items-start gap-3">
                   <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent-secondary/10">
                     <span className="text-[9px] font-bold text-accent-secondary">
@@ -135,24 +161,39 @@ export default function HowWeWorkPage() {
             Continuous Feedback Loop
           </div>
           <p className="max-w-[560px] text-[16px] font-medium leading-[1.7] text-text-primary">
-            {operatingModel.sync.description}
+            Weekly syncs are where decisions are made based on what is actually
+            working in the system.
           </p>
-          <div className="mt-4 flex gap-6">
+          <p className="mt-4 max-w-[560px] text-[16px] font-medium leading-[1.7] text-text-primary">
+            Both tracks operate from a shared backlog and adjust continuously.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-6">
             {[
               { label: "Cadence", value: "Weekly" },
               { label: "Artifact", value: "Shared backlog" },
-              { label: "Principle", value: "Jointly prioritized" },
+              {
+                label: "Principle",
+                value: "Decisions based on real system behavior",
+              },
             ].map((s) => (
               <div key={s.label}>
                 <div className="text-[10px] font-bold uppercase tracking-wider text-text-muted">
                   {s.label}
                 </div>
-                <div className="mt-0.5 text-[13px] font-bold text-text-primary">
+                <div className="mt-0.5 max-w-[200px] text-[13px] font-bold leading-[1.5] text-text-primary">
                   {s.value}
                 </div>
               </div>
             ))}
           </div>
+          <p className="mt-5 max-w-[620px] text-[16px] leading-[1.7] text-text-primary">
+            There is no handoff between tracks. If something cannot be
+            implemented, it is not considered a valid recommendation.
+          </p>
+          <p className="mt-4 max-w-[620px] text-[16px] leading-[1.7] text-text-primary">
+            This model only works if both roles stay tightly coupled. If they
+            drift, delivery slows and decisions lose context.
+          </p>
         </div>
       </div>
 
