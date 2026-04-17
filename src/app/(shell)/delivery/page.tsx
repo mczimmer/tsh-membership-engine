@@ -2,6 +2,41 @@ import Link from "next/link";
 import { PageWrapper } from "@/components/PageWrapper";
 import { deliveryLoop } from "@/data";
 
+const LOOP_CONTENT = {
+  signals: [
+    "How staff actually use the system",
+    "What members actually do",
+    "Where AI outputs are correct or failing",
+    "How the system behaves under load",
+  ],
+  controlPoints: [
+    "Architecture decisions that define system behavior",
+    "Decisions about how member data is used",
+    "What is not working and needs to change",
+  ],
+  systemChanges: [
+    "Changes to how the system behaves",
+    "Changes to AI logic and outputs",
+    "Changes to rules and controls",
+    "What becomes reusable system knowledge",
+  ],
+};
+
+const RITUAL_COPY: Record<string, string> = {
+  weekly_demos:
+    "Live walkthrough of what actually shipped, what changed, and what is next. Working software, not slides.",
+  sprints:
+    "Work is structured into short cycles that are long enough to ship meaningful changes and short enough to adjust quickly.",
+  adrs:
+    "Key technical decisions are recorded with context and rationale. This prevents the system drifting over time.",
+  privacy_checks:
+    "Any feature using member data is reviewed before release. Privacy is enforced in the system, not added later.",
+  living_docs:
+    "Documentation evolves with the system. If it is not updated, it is treated as incorrect.",
+  async_first:
+    "Most communication happens asynchronously. Sync time is reserved for decisions, not status updates.",
+};
+
 const TYPE_CONFIG = {
   feedback: {
     label: "Feedback",
@@ -36,10 +71,18 @@ export default function DeliveryPage() {
           structured outcomes
         </h1>
         <p className="mt-6 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
-          We'll match TSH's pace with sprint-based delivery and weekly
-          demos, while layering in lightweight governance that compounds.
+          The system moves in short loops. Decisions are made continuously
+          based on real usage, not assumptions.
+        </p>
+        <p className="mt-4 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
+          These are the control points that keep speed, quality, and
+          governance aligned.
         </p>
       </div>
+
+      <p className="mb-6 text-[14px] leading-[1.7] text-text-tertiary">
+        Every change to the system follows this loop.
+      </p>
 
       <div className="mb-10 overflow-hidden rounded-2xl border border-border-subtle">
         <div className="grid grid-cols-3 divide-x divide-border-subtle">
@@ -59,10 +102,10 @@ export default function DeliveryPage() {
                 </svg>
               </div>
               <div className="text-[11px] font-bold uppercase tracking-wider text-accent-secondary">
-                Feedback Inputs
+                System Signals
               </div>
             </div>
-            {deliveryLoop.feedbackInputs.map((item, i) => (
+            {LOOP_CONTENT.signals.map((item, i) => (
               <div
                 key={i}
                 className="relative mb-2 pl-3 text-[12px] leading-relaxed text-text-secondary"
@@ -91,10 +134,10 @@ export default function DeliveryPage() {
                 </svg>
               </div>
               <div className="text-[11px] font-bold uppercase tracking-wider text-amber-600">
-                Decision Points
+                Control Points
               </div>
             </div>
-            {deliveryLoop.decisionPoints.map((item, i) => (
+            {LOOP_CONTENT.controlPoints.map((item, i) => (
               <div
                 key={i}
                 className="relative mb-2 pl-3 text-[12px] leading-relaxed text-text-secondary"
@@ -121,10 +164,10 @@ export default function DeliveryPage() {
                 </svg>
               </div>
               <div className="text-[11px] font-bold uppercase tracking-wider text-green-600">
-                Outputs
+                System Changes
               </div>
             </div>
-            {deliveryLoop.outputs.map((item, i) => (
+            {LOOP_CONTENT.systemChanges.map((item, i) => (
               <div
                 key={i}
                 className="relative mb-2 pl-3 text-[12px] leading-relaxed text-text-secondary"
@@ -150,13 +193,16 @@ export default function DeliveryPage() {
           >
             <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0118.8-4.3M22 12.5a10 10 0 01-18.8 4.3" />
           </svg>
-          <span className="text-[12px] font-bold text-text-secondary">
-            2-week sprint cycle · continuous feedback loop
+          <span className="max-w-[420px] text-center text-[12px] font-bold leading-[1.5] text-text-secondary">
+            2 week delivery cycles with continuous feedback and decision making
           </span>
         </div>
       </div>
 
       <div className="mb-14">
+        <p className="mb-5 text-[14px] leading-[1.7] text-text-tertiary">
+          These are not ceremonies. They are control points in the system.
+        </p>
         <div className="mb-5 text-[11px] font-bold uppercase tracking-[0.15em] text-text-muted">
           The rituals
         </div>
@@ -190,13 +236,40 @@ export default function DeliveryPage() {
                       </span>
                     </div>
                     <div className="text-[12px] leading-relaxed text-text-tertiary">
-                      {ritual.description}
+                      {RITUAL_COPY[ritual.id] ?? ritual.description}
                     </div>
                   </div>
                 </div>
               </div>
             );
           })}
+        </div>
+      </div>
+
+      <div className="relative mb-10">
+        <div className="absolute bottom-0 left-0 top-0 w-1 rounded-full bg-accent-primary" />
+        <div className="py-2 pl-8">
+          <div className="mb-2 text-[11px] font-bold uppercase tracking-[0.15em] text-accent-primary">
+            Where this breaks
+          </div>
+          <div className="space-y-3">
+            {[
+              "If signals are ignored, decisions are based on assumptions",
+              "If decisions are not recorded, the system becomes inconsistent",
+              "If rituals become routine, they stop influencing outcomes",
+              "If feedback loops slow down, the system drifts",
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-3">
+                <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary/65" />
+                <span className="text-[14px] leading-[1.7] text-text-secondary">
+                  {item}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="mt-5 max-w-[620px] text-[16px] leading-[1.7] text-text-primary">
+            If a ritual does not change a decision, it is removed.
+          </p>
         </div>
       </div>
 
