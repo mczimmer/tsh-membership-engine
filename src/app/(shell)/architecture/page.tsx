@@ -7,12 +7,14 @@ import {
   ecosystemPlatforms,
   membershipEngineCore,
   membershipEngineCoreIntro,
-  productizationIntro,
 } from "@/data";
+
+const HERO_BODY =
+  "The Membership Engine is the orchestration and intelligence layer that sits across TSH's existing systems. It does not replace them. It connects them and makes them behave like a single system.";
 
 const WHAT_THIS_IS = [
   "A composable orchestration layer across Muse, Salesforce, Databricks, Hightouch, and Optimizely",
-  "Embeds AI into operational workflows, not just tooling",
+  "Embeds AI into operational workflows where decisions are made",
   "Designed to scale across hubs and evolve into a reusable product",
 ];
 
@@ -20,6 +22,20 @@ const WHAT_THIS_IS_NOT = [
   "Not a replacement for any existing system",
   "Not AI sitting outside operational workflows",
   "Not a big-bang rebuild requiring months before value appears",
+  "Not a guarantee that AI outputs are correct",
+];
+
+const PRODUCTIZATION_COPY = [
+  "This only becomes a reusable product if the core is separated from hub specific logic.",
+  "This is not a v1 requirement, but the architecture must not block it.",
+];
+
+const EXTENDED_CHANGE_PAIRS = [
+  ...changePairs,
+  {
+    from: "Implicit system behavior",
+    to: "Explicit, observable system behavior",
+  },
 ];
 
 const LAYER_STYLES = {
@@ -75,7 +91,7 @@ export default function ArchitecturePage() {
           {architecturePositioning.title}
         </h1>
         <p className="mt-6 max-w-[720px] text-[20px] leading-[1.7] text-text-primary">
-          {architecturePositioning.body}
+          {HERO_BODY}
         </p>
       </div>
 
@@ -191,6 +207,16 @@ export default function ArchitecturePage() {
         </div>
       </div>
 
+      <p className="mb-4 max-w-[760px] text-[14px] leading-[1.7] text-text-tertiary">
+        This is a layered system, not a clean one. Some flows will remain
+        imperfect. The goal is control, not perfection.
+      </p>
+
+      <p className="mb-10 max-w-[760px] text-[14px] leading-[1.7] text-text-tertiary">
+        The architecture is not the system. How it is used determines whether
+        it works.
+      </p>
+
       <div className="mb-10 grid grid-cols-2 gap-4">
         <div className="rounded-xl border border-blue-200 bg-accent-primary px-6 py-5 text-white shadow-card">
           <div className="mb-4 text-[12px] font-bold uppercase tracking-[0.16em] text-white/70">
@@ -260,6 +286,10 @@ export default function ArchitecturePage() {
           The value is in how these systems connect through the Membership
           Engine, not in replacing the tools TSH already owns.
         </p>
+        <p className="mt-3 text-[14px] leading-[1.7] text-text-tertiary">
+          These systems will not behave consistently until they are
+          orchestrated.
+        </p>
       </div>
 
       <div className="mb-10">
@@ -267,7 +297,7 @@ export default function ArchitecturePage() {
           What changes from today
         </div>
         <div className="grid grid-cols-3 gap-3">
-          {changePairs.map((pair) => (
+          {EXTENDED_CHANGE_PAIRS.map((pair) => (
             <div
               key={`${pair.from}-${pair.to}`}
               className="grid grid-cols-[1fr_20px_1fr] items-center rounded-xl border border-border-subtle bg-bg-card px-4 py-3 shadow-card"
@@ -288,9 +318,11 @@ export default function ArchitecturePage() {
         <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.15em] text-accent-primary">
           Productisation potential
         </div>
-        <p className="text-[15px] leading-[1.75] text-text-secondary">
-          {productizationIntro}
-        </p>
+        <div className="space-y-4 text-[15px] leading-[1.75] text-text-secondary">
+          {PRODUCTIZATION_COPY.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
 
         <div className="relative mt-5">
           <div className="absolute bottom-0 left-0 top-0 w-1 rounded-full bg-accent-primary" />
@@ -301,6 +333,30 @@ export default function ArchitecturePage() {
               needed for productisation: core services, configurable workflows,
               composable integrations, and multi-tenant separation.
             </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative mb-10">
+        <div className="absolute bottom-0 left-0 top-0 w-1 rounded-full bg-accent-primary" />
+        <div className="py-2 pl-8">
+          <div className="mb-2 text-[11px] font-bold uppercase tracking-[0.15em] text-accent-primary">
+            Where this breaks
+          </div>
+          <div className="space-y-3">
+            {[
+              "If system boundaries are unclear, integrations become brittle",
+              "If context is inconsistent, AI outputs degrade",
+              "If orchestration is bypassed, systems drift apart",
+              "If governance is added later, delivery slows significantly",
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-3">
+                <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary/65" />
+                <span className="text-[14px] leading-[1.7] text-text-secondary">
+                  {item}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
