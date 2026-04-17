@@ -49,6 +49,13 @@ const LAYER_STYLES = {
   },
 } as const;
 
+const SHORT_LABELS: Record<string, string> = {
+  ORCHESTRATION: "ORCH.",
+  INTELLIGENCE: "INTEL.",
+  EXPERIENCE: "EXP.",
+  RECORD: "RECORD",
+};
+
 export default function ArchitecturePage() {
   const ecosystemCards = ecosystemPlatforms.filter(
     (platform) => platform.id !== "ai_delivery",
@@ -223,7 +230,7 @@ export default function ArchitecturePage() {
           {ecosystemCards.map((platform) => (
             <div
               key={platform.id}
-              className={`rounded-xl border p-4 ${platform.bg} ${platform.border}`}
+              className={`overflow-hidden rounded-xl border p-4 ${platform.bg} ${platform.border}`}
             >
               <div className="mb-1 font-display text-[15px] font-extrabold text-text-primary">
                 {platform.name}
@@ -231,7 +238,7 @@ export default function ArchitecturePage() {
               <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.12em] text-text-muted">
                 {platform.role}
               </div>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1">
                 {platform.mapsTo.map((layerId) => {
                   const layer = architectureLayers.find((item) => item.id === layerId);
                   const style = LAYER_STYLES[layerId];
@@ -239,9 +246,9 @@ export default function ArchitecturePage() {
                   return (
                     <span
                       key={layerId}
-                      className={`inline-flex items-center rounded-full border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.12em] ${style.bg} ${style.border} ${style.text}`}
+                      className={`inline-flex max-w-full items-center truncate rounded border px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-[0.12em] ${style.bg} ${style.border} ${style.text}`}
                     >
-                      {layer.label}
+                      {SHORT_LABELS[layer.label] || layer.label}
                     </span>
                   );
                 })}
