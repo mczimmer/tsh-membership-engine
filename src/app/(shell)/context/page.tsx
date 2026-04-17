@@ -6,6 +6,35 @@ import { PageWrapper } from "@/components/PageWrapper";
 import { tensions } from "@/data";
 import type { Tension } from "@/data";
 
+const TENSION_COPY: Record<
+  Tension["id"],
+  {
+    leftDescription: string;
+    rightDescription: string;
+  }
+> = {
+  speed_vs_structure: {
+    leftDescription:
+      "Shipping features quickly without always knowing how they behave",
+    rightDescription:
+      "Knowing how the system behaves and being able to trust it",
+  },
+  personalization_vs_privacy: {
+    leftDescription:
+      "Using detailed member data to drive real actions in the hubs",
+    rightDescription:
+      "Being able to explain how that data is used and controlled",
+  },
+  empowerment_vs_governance: {
+    leftDescription: "Staff acting on live data without central oversight",
+    rightDescription:
+      "Knowing who is responsible when something goes wrong",
+  },
+};
+
+const DEEP_DIVE_RISK =
+  "Regulatory exposure, loss of member trust, and decisions that cannot be explained after the fact";
+
 function TensionDiagram({
   tension,
   isActive,
@@ -52,7 +81,7 @@ function TensionDiagram({
                 {tension.left.label}
               </div>
               <div className="text-[13px] leading-relaxed text-text-secondary">
-                {tension.left.description}
+                {TENSION_COPY[tension.id].leftDescription}
               </div>
             </div>
 
@@ -90,7 +119,7 @@ function TensionDiagram({
                 {tension.right.label}
               </div>
               <div className="text-[13px] leading-relaxed text-text-secondary">
-                {tension.right.description}
+                {TENSION_COPY[tension.id].rightDescription}
               </div>
             </div>
           </div>
@@ -144,11 +173,11 @@ function TensionDetail({ tension }: { tension: Tension }) {
               </svg>
             </div>
             <div className="text-[11px] font-bold uppercase tracking-wider text-text-muted">
-              Risk if unbalanced
+              Where this breaks
             </div>
           </div>
           <div className="pl-7 text-[14px] font-medium leading-relaxed text-text-primary">
-            {tension.riskIfUnbalanced}
+            {DEEP_DIVE_RISK}
           </div>
         </div>
 
@@ -194,27 +223,32 @@ export default function ContextPage() {
           Where we are
         </h1>
         <p className="mt-6 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
-          TSH has an idea for something that could be genuinely game changing:
-          an AI powered membership platform built from the inside, shaped by
-          the people who run the hubs, not bought from a vendor. And the
-          progress so far has been remarkable. Using tools like Copilot and
-          Claude, the team has moved faster than anyone expected.
+          TSH is building an AI driven membership platform from the inside. It
+          is shaped by the people running the hubs, not bought from a vendor.
+        </p>
+        <p className="mt-4 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
+          The current approach has produced a fast prototype. It proves what is
+          possible. It does not yet behave like a system.
         </p>
       </div>
 
-      <div className="mb-10 relative">
+      <div className="relative mb-10">
         <div className="absolute bottom-0 left-0 top-0 w-1 rounded-full bg-accent-primary" />
         <div className="py-2 pl-8">
           <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.15em] text-accent-primary">
             The inflection point
           </div>
           <p className="max-w-[760px] text-[16px] leading-[1.75] text-text-primary">
-            But what got TSH here will not get it to the next stage. Vibe
-            coding and rapid experimentation built a prototype that proves the
-            concept. Now comes the harder work: making it enterprise ready,
-            scaling it across hubs, and keeping the door open for
-            productisation. That transition is what this engagement is designed
-            to support.
+            What got TSH here will not get it to the next stage.
+          </p>
+          <p className="mt-4 max-w-[760px] text-[16px] leading-[1.75] text-text-primary">
+            Rapid experimentation has created something that works. It has not
+            created something that can be trusted, scaled, or operated across
+            hubs.
+          </p>
+          <p className="mt-4 max-w-[760px] text-[16px] leading-[1.75] text-text-primary">
+            The next phase is not about more features. It is about making the
+            system stable enough to build on.
           </p>
         </div>
       </div>
@@ -222,6 +256,10 @@ export default function ContextPage() {
       <p className="mb-8 max-w-[700px] text-[15px] leading-[1.75] text-text-secondary">
         We see three tensions at the heart of that transition. These are not
         problems to fix. They are forces to navigate.
+      </p>
+
+      <p className="mb-6 text-[14px] leading-[1.7] text-text-tertiary">
+        Select a tension to see the risk it creates and how it is resolved.
       </p>
 
       <div className="mb-10 space-y-4">
