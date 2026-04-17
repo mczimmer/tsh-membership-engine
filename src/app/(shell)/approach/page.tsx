@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { PageWrapper } from "@/components/PageWrapper";
 import { maturityPhases } from "@/data";
+import type { MaturityPhaseId } from "@/data/schema";
 
 const DIMENSION_LABELS = [
   { key: "architecture" as const, label: "Architecture", icon: "◇" },
@@ -12,9 +13,65 @@ const DIMENSION_LABELS = [
   { key: "risk" as const, label: "Risk", icon: "⊕" },
 ];
 
+const PHASE_COPY: Record<
+  MaturityPhaseId,
+  {
+    activities: string[];
+    dimensions: {
+      architecture: string;
+      compliance: string;
+      velocity: string;
+      risk: string;
+    };
+    friction: string;
+  }
+> = {
+  now: {
+    activities: [
+      "Fast feature delivery with limited system control",
+      "Features added before system design is clear",
+      "Data flows that are not yet reliable or observable",
+      "Limited visibility into how the system behaves in production",
+    ],
+    dimensions: {
+      architecture: "Monolithic with emerging patterns",
+      compliance: "Informal and inconsistent",
+      velocity: "High, but uneven",
+      risk: "Increasing with scale",
+    },
+    friction:
+      "At this stage, the system will still be inconsistent. That is expected.",
+  },
+  validate: {
+    activities: maturityPhases.find((phase) => phase.id === "validate")!
+      .activities,
+    dimensions: maturityPhases.find((phase) => phase.id === "validate")!
+      .dimensions,
+    friction:
+      "At this stage, the system will still be inconsistent. That is expected.",
+  },
+  harden: {
+    activities: maturityPhases.find((phase) => phase.id === "harden")!
+      .activities,
+    dimensions: maturityPhases.find((phase) => phase.id === "harden")!
+      .dimensions,
+    friction:
+      "This is where delivery often slows. That is the cost of making the system stable.",
+  },
+  scale: {
+    activities: maturityPhases.find((phase) => phase.id === "scale")!
+      .activities,
+    dimensions: maturityPhases.find((phase) => phase.id === "scale")!
+      .dimensions,
+    friction:
+      "This only works if the core is separated from hub specific logic. If not, it remains custom.",
+  },
+};
+
 export default function ApproachPage() {
   const [active, setActive] = useState(0);
   const p = maturityPhases[active];
+  const phaseCopy = PHASE_COPY[p.id];
 
   return (
     <PageWrapper breadcrumb="Our Approach">
@@ -28,11 +85,21 @@ export default function ApproachPage() {
           not revolution
         </h1>
         <p className="mt-6 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
-          We won't stop and rebuild. We'll harden what works, replace
-          what doesn't, and layer in governance incrementally - all while
-          continuing to ship.
+          This is not a clean rebuild. It is a controlled transition.
+        </p>
+        <p className="mt-4 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
+          The current system keeps running. We improve it in place.
+        </p>
+        <p className="mt-4 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
+          What works is kept. What does not is replaced. Governance is added
+          where it is missing. All while continuing to ship.
         </p>
       </div>
+
+      <p className="mb-6 text-[14px] leading-[1.7] text-text-tertiary">
+        Each phase removes a specific risk. If the risk is still present, the
+        phase is not complete.
+      </p>
 
       <div className="mb-10">
         <div className="relative flex items-start">
@@ -52,7 +119,9 @@ export default function ApproachPage() {
               <button
                 key={phase.id}
                 onClick={() => setActive(i)}
-                className="group relative z-10 flex-1 text-center"
+                className={`group relative z-10 flex-1 text-center transition-opacity ${
+                  isCurrent ? "opacity-100" : isPast ? "opacity-100" : "opacity-55"
+                }`}
               >
                 <div className="mb-3 flex justify-center">
                   <div
@@ -121,7 +190,7 @@ export default function ApproachPage() {
               {active === 0 ? "Current Reality" : "Key Activities"}
             </div>
             <div className="space-y-4">
-              {p.activities.map((d, i) => (
+              {phaseCopy.activities.map((d, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <div
                     className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
@@ -156,12 +225,57 @@ export default function ApproachPage() {
                     className="font-display text-[15px] font-bold"
                     style={{ color: p.color }}
                   >
-                    {p.dimensions[dim.key]}
+                    {phaseCopy.dimensions[dim.key]}
                   </div>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+        <div className="border-t border-border-subtle bg-white/40 px-8 py-4 text-[13px] leading-[1.7] text-text-secondary">
+          {phaseCopy.friction}
+        </div>
+      </div>
+
+      <div className="mb-10 overflow-hidden rounded-2xl border border-border-subtle bg-bg-card px-6 py-5">
+        <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-text-muted">
+          What we are not doing
+        </div>
+        <div className="space-y-3">
+          {[
+            "We are not rebuilding the platform from scratch",
+            "We are not pausing delivery to fix architecture",
+            "We are not introducing governance as a separate phase",
+            "We are not assuming the system becomes clean overnight",
+          ].map((item) => (
+            <div key={item} className="flex items-start gap-3">
+              <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-text-muted/55" />
+              <span className="text-[14px] leading-[1.7] text-text-secondary">
+                {item}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-14 overflow-hidden rounded-2xl border border-border-subtle bg-tsh-cream/55 px-6 py-5">
+        <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.15em] text-text-muted">
+          Where this fails
+        </div>
+        <div className="space-y-3">
+          {[
+            "If validation is skipped, the wrong system is hardened",
+            "If hardening is rushed, issues move into production",
+            "If scaling starts too early, complexity increases faster than control",
+            "If productization is forced, flexibility is lost",
+          ].map((item) => (
+            <div key={item} className="flex items-start gap-3">
+              <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary/65" />
+              <span className="text-[14px] leading-[1.7] text-text-secondary">
+                {item}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -174,8 +288,11 @@ export default function ApproachPage() {
             Experimental
           </div>
           <div className="text-[13px] leading-relaxed text-text-secondary">
-            Fast-moving, AI-assisted, feature-first. Strong energy but growing
-            technical debt, informal compliance, and limited observability.
+            Fast, AI assisted, and feature driven.
+          </div>
+          <div className="mt-3 text-[13px] leading-relaxed text-text-secondary">
+            The system works, but control is limited, and technical debt is
+            increasing.
           </div>
         </div>
         <div className="rounded-xl border border-green-200 bg-green-50 p-6">
@@ -186,8 +303,10 @@ export default function ApproachPage() {
             Production-grade
           </div>
           <div className="text-[13px] leading-relaxed text-text-secondary">
-            Distributed, multi-tenant ready. Automated compliance, sustained
-            high velocity, and controlled risk - across every Social Hub.
+            A system that can be trusted, observed, and operated across hubs.
+          </div>
+          <div className="mt-3 text-[13px] leading-relaxed text-text-secondary">
+            Changes are predictable. Data is controlled. Risk is understood.
           </div>
         </div>
       </div>
