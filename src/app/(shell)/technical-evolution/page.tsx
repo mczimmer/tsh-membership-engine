@@ -21,7 +21,7 @@ export default function TechnicalEvolutionPage() {
     <PageWrapper breadcrumb="Technical Evolution">
       <div className="mb-10">
         <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.15em] text-accent-primary">
-          SYSTEM
+          Membership Engine
         </div>
         <h1 className="max-w-[640px] font-display text-[44px] font-extrabold leading-[1.05] tracking-tight text-text-primary">
           From pilot

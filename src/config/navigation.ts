@@ -30,7 +30,7 @@ export const NAVIGATION: NavSection[] = [
     ],
   },
   {
-    group: "System",
+    group: "Membership Engine",
     pages: [
       { id: "experiences", label: "Experience Moments", href: "/experiences" },
       { id: "architecture", label: "Architecture", href: "/architecture" },

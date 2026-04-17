@@ -12,6 +12,21 @@ import {
 } from "@/data";
 import type { ExperienceMoment } from "@/data";
 
+const MOMENT_DESCRIPTIONS: Record<string, string> = {
+  arrival_recognition:
+    "Hosts receive real time context when a member checks in.\n\nThe goal is to improve the first interaction, not just surface data.",
+  cowork_matching:
+    "Members are matched with relevant people in the hub based on shared context and opt in data.\n\nThe goal is to create useful introductions, not generate activity for its own sake.",
+  event_personalization:
+    "Members receive event suggestions based on their interests, attendance history, and current hub context.\n\nThe goal is to increase relevant participation, not just show more options.",
+  smart_room_prep:
+    "Returning members trigger room setup based on known preferences before arrival.\n\nThe goal is to reduce manual coordination while keeping the experience consistent.",
+  learning_pathways:
+    "Student members receive recommendations for learning content and next steps based on their profile and engagement.\n\nThe goal is to make the system useful over time, not just novel on first use.",
+  host_dashboard:
+    "Hosts see live member context and recommended actions while the shift is running.\n\nThe goal is to support better decisions in the moment, not flood staff with signals.",
+};
+
 function MomentCard({ moment }: { moment: ExperienceMoment }) {
   const [open, setOpen] = useState(false);
   const pCfg = pillarColors[moment.pillar];
@@ -68,9 +83,13 @@ function MomentCard({ moment }: { moment: ExperienceMoment }) {
         <h3 className="mb-2 font-display text-[18px] font-extrabold leading-snug text-text-primary">
           {moment.name}
         </h3>
-        <p className="text-[13px] leading-relaxed text-text-secondary">
-          {moment.description}
-        </p>
+        <div className="space-y-3 text-[13px] leading-relaxed text-text-secondary">
+          {(MOMENT_DESCRIPTIONS[moment.id] ?? moment.description)
+            .split("\n\n")
+            .map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+        </div>
 
         <div className="mt-4 flex items-center gap-5">
           <span className="flex items-center gap-1.5 text-[11px] text-text-tertiary">
@@ -175,6 +194,9 @@ function MomentCard({ moment }: { moment: ExperienceMoment }) {
               </div>
             </div>
           </div>
+          <div className="mt-5 border-t border-border-subtle pt-4 text-[12px] leading-[1.7] text-text-tertiary">
+            Powered by: member context, API layer, AI workflows
+          </div>
         </div>
       )}
     </div>
@@ -207,8 +229,11 @@ export default function ExperiencesPage() {
           the member
         </h1>
         <p className="mt-6 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
-          Every system component, every architectural decision, every governance
-          layer exists to enable these moments.
+          This is where the system creates value.
+        </p>
+        <p className="mt-4 max-w-[580px] text-[17px] leading-[1.8] text-text-secondary">
+          Every decision in the architecture, data, and governance layers shows
+          up here.
         </p>
       </div>
 
@@ -216,26 +241,26 @@ export default function ExperiencesPage() {
         {[
           {
             value: stats.total,
-            label: "Moments",
-            sub: "defined",
+            label: "Use cases defined",
+            sub: "",
             color: "text-text-primary",
           },
           {
             value: stats.pilot,
-            label: "In Pilot",
-            sub: "actively testing",
+            label: "being tested live",
+            sub: "",
             color: "text-amber-600",
           },
           {
             value: stats.concept,
-            label: "In Concept",
-            sub: "designed",
+            label: "not yet proven",
+            sub: "",
             color: "text-text-tertiary",
           },
           {
             value: "4",
             label: "Pillars",
-            sub: "Learn · Stay · Work · Play",
+            sub: "Learn, Stay, Work, Play",
             color: "text-accent-primary",
           },
         ].map((s, i) => (
@@ -255,6 +280,10 @@ export default function ExperiencesPage() {
           </div>
         ))}
       </div>
+
+      <p className="mb-8 text-[14px] leading-[1.7] text-text-tertiary">
+        Not all of these will scale. That is expected.
+      </p>
 
       <div className="mb-6 flex items-center gap-2">
         <button
@@ -296,14 +325,23 @@ export default function ExperiencesPage() {
         <div className="absolute bottom-0 left-0 top-0 w-1 rounded-full bg-accent-primary" />
         <div className="py-2 pl-8">
           <div className="mb-2 text-[11px] font-bold uppercase tracking-[0.15em] text-accent-primary">
-            Every moment is connected
+            Where this breaks
           </div>
-          <p className="max-w-[560px] text-[15px] font-medium leading-[1.7] text-text-primary">
-            Experience moments aren't standalone features - they're the
-            visible output of the Membership Engine. Each traces back through AI
-            workflows, data architecture, and governance. Change one component,
-            and the ripple is visible across every moment it touches.
-          </p>
+          <div className="space-y-3">
+            {[
+              "If context is incomplete, recommendations feel random",
+              "If AI outputs are not trusted, staff ignore them",
+              "If experiences differ across hubs, the system loses consistency",
+              "If success is not measured, nothing improves",
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-3">
+                <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent-primary/65" />
+                <span className="text-[14px] leading-[1.7] text-text-secondary">
+                  {item}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
